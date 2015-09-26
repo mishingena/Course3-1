@@ -49,7 +49,7 @@
 }
 
 - (IBAction)logoutDidPress:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)addButtonDidPress:(id)sender {
@@ -89,10 +89,6 @@
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)dealloc {
-    NSLog(@"%@ deallocated", NSStringFromClass([self class]));
 }
 
 @end

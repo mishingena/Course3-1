@@ -10,6 +10,9 @@
 #import <ReactiveCocoa.h>
 
 @interface NetManager : NSObject
+
 + (NetManager *)sharedInstance;
 - (RACSignal *)signInWithLogin:(NSString *)login andPassword:(NSString *)password;
+- (RACSignal *)registerWithLogin:(NSString *)login password:(NSString *)password confiramtion:(NSString *)confirmation;
+
 @end

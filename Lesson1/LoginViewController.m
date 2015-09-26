@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "NetManager.h"
 #import "AppDelegate.h"
+#import "UIViewController+Extensions.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *loginTextField;
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     @weakify(self);
     [self.keyboardSignal subscribeNext:^(NSNumber *x) {
         [UIView animateWithDuration:.3 animations:^{
@@ -30,6 +32,7 @@
             [self.view layoutIfNeeded];
         }];
     }];
+
     [[self rac_signalForSelector:@selector(textFieldShouldReturn:)] subscribeNext:^(RACTuple *tuple) {
         @strongify(self);
         UITextField *tf = tuple.first;
@@ -40,9 +43,11 @@
             [self.signInButton sendActionsForControlEvents:UIControlEventTouchUpInside];
         }
     }];
+    
     RAC(self.signInButton, enabled) = [RACSignal combineLatest:@[ self.loginTextField.rac_textSignal, self.passwordTextField.rac_textSignal ] reduce:^(NSString *login, NSString *password){
         return @(login.length > 4 && password.length > 2);
     }];
+    
     [[[self.signInButton rac_signalForControlEvents:UIControlEventTouchUpInside] filter:^BOOL(UIButton *sender) {
         return sender.enabled;
     }] subscribeNext:^(id x) {
@@ -58,6 +63,11 @@
 //                [UIView setAnimationsEnabled:oldState];
 //            } completion:nil];
         }];
+    }];
+    
+    [[self.signUpButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        [self performSegueWithIdentifier:@"showRegisterVC" sender:self];
     }];
 }
 

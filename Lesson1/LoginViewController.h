@@ -6,9 +6,9 @@
 //  Copyright © 2015 Azat Almeev. All rights reserved.
 //
 
-#import "KeyboardViewController.h"
+@import UIKit;
 
-@interface LoginViewController : KeyboardViewController
+@interface LoginViewController : UIViewController
 
 
 @end

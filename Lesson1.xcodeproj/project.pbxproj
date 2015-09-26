@@ -14,10 +14,11 @@
 		AACFAF3C1BAF4F3C00BA7C90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACFAF3A1BAF4F3C00BA7C90 /* Main.storyboard */; };
 		AACFAF3E1BAF4F3C00BA7C90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AACFAF3D1BAF4F3C00BA7C90 /* Assets.xcassets */; };
 		AACFAF411BAF4F3C00BA7C90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACFAF3F1BAF4F3C00BA7C90 /* LaunchScreen.storyboard */; };
-		AACFAF4A1BAF51A200BA7C90 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACFAF491BAF51A200BA7C90 /* KeyboardViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AACFAF4D1BAF5B0100BA7C90 /* UIViewController+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AACFAF4C1BAF5B0100BA7C90 /* UIViewController+Extensions.m */; settings = {ASSET_TAGS = (); }; };
 		AACFAF501BAF5BA500BA7C90 /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AACFAF4F1BAF5BA500BA7C90 /* NetManager.m */; settings = {ASSET_TAGS = (); }; };
 		AACFAF531BAF5F9D00BA7C90 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B21DC0531BB5F02000DF1F26 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B21DC0561BB5F2C900DF1F26 /* RegisterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +35,16 @@
 		AACFAF3D1BAF4F3C00BA7C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AACFAF401BAF4F3C00BA7C90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AACFAF421BAF4F3C00BA7C90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AACFAF481BAF51A200BA7C90 /* KeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
-		AACFAF491BAF51A200BA7C90 /* KeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
 		AACFAF4B1BAF5B0100BA7C90 /* UIViewController+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extensions.h"; sourceTree = "<group>"; };
 		AACFAF4C1BAF5B0100BA7C90 /* UIViewController+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extensions.m"; sourceTree = "<group>"; };
 		AACFAF4E1BAF5BA500BA7C90 /* NetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
 		AACFAF4F1BAF5BA500BA7C90 /* NetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
 		AACFAF511BAF5F9D00BA7C90 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
 		AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
+		B21DC0511BB5F02000DF1F26 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		B21DC0541BB5F2C900DF1F26 /* RegisterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewModel.h; sourceTree = "<group>"; };
+		B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +91,16 @@
 				AACFAF4E1BAF5BA500BA7C90 /* NetManager.h */,
 				AACFAF4F1BAF5BA500BA7C90 /* NetManager.m */,
 				AACFAF3A1BAF4F3C00BA7C90 /* Main.storyboard */,
-				AACFAF481BAF51A200BA7C90 /* KeyboardViewController.h */,
-				AACFAF491BAF51A200BA7C90 /* KeyboardViewController.m */,
 				AACFAF4B1BAF5B0100BA7C90 /* UIViewController+Extensions.h */,
 				AACFAF4C1BAF5B0100BA7C90 /* UIViewController+Extensions.m */,
 				AACFAF371BAF4F3C00BA7C90 /* LoginViewController.h */,
 				AACFAF381BAF4F3C00BA7C90 /* LoginViewController.m */,
 				AACFAF511BAF5F9D00BA7C90 /* AppViewController.h */,
 				AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */,
+				B21DC0511BB5F02000DF1F26 /* RegisterViewController.h */,
+				B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */,
+				B21DC0541BB5F2C900DF1F26 /* RegisterViewModel.h */,
+				B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */,
 				AACFAF311BAF4F3C00BA7C90 /* Supporting Files */,
 			);
 			path = Lesson1;
@@ -234,7 +239,8 @@
 				AACFAF361BAF4F3C00BA7C90 /* AppDelegate.m in Sources */,
 				AACFAF531BAF5F9D00BA7C90 /* AppViewController.m in Sources */,
 				AACFAF331BAF4F3C00BA7C90 /* main.m in Sources */,
-				AACFAF4A1BAF51A200BA7C90 /* KeyboardViewController.m in Sources */,
+				B21DC0561BB5F2C900DF1F26 /* RegisterViewModel.m in Sources */,
+				B21DC0531BB5F02000DF1F26 /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

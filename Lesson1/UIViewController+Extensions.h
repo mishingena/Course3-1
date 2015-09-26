@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ReactiveCocoa.h>
 
 @interface UIViewController (Extensions)
+
 - (void)showError:(NSString *)message;
+
+@end
+
+@interface UIViewController (Keyboard)
+
+@property (nonatomic, strong) RACSignal *keyboardSignal;
+
 @end

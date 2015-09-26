@@ -39,4 +39,20 @@
         return nil;
     }];
 }
+
+- (RACSignal *)registerWithLogin:(NSString *)login password:(NSString *)password confiramtion:(NSString *)confirmation {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        if (login.length > 4  && password.length > 2 && [password isEqualToString:confirmation])
+            [subscriber sendCompleted];
+        else {
+            if (![password isEqualToString:confirmation]) {
+                [subscriber sendError:[NSError errorWithDomain:@"Lesson1.NetManager" code:401 userInfo:@{ NSLocalizedDescriptionKey : @"Password and confiramtion are not equal"}]];
+            } else {
+                [subscriber sendError:[NSError errorWithDomain:@"Lesson1.NetManager" code:401 userInfo:@{ NSLocalizedDescriptionKey : @"Invalid registration credetionals" }]];
+            }
+        }
+        return nil;
+    }];
+}
+
 @end
