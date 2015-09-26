@@ -19,6 +19,9 @@
 		AACFAF531BAF5F9D00BA7C90 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B21DC0531BB5F02000DF1F26 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B21DC0561BB5F2C900DF1F26 /* RegisterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */; settings = {ASSET_TAGS = (); }; };
+		B21DC0591BB6986300DF1F26 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC0581BB6986300DF1F26 /* EditViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B21DC05C1BB716DF00DF1F26 /* StoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC05B1BB716DF00DF1F26 /* StoreManager.m */; settings = {ASSET_TAGS = (); }; };
+		B21DC05F1BB7180200DF1F26 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = B21DC05E1BB7180200DF1F26 /* Item.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,12 @@
 		B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		B21DC0541BB5F2C900DF1F26 /* RegisterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewModel.h; sourceTree = "<group>"; };
 		B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewModel.m; sourceTree = "<group>"; };
+		B21DC0571BB6986300DF1F26 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		B21DC0581BB6986300DF1F26 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		B21DC05A1BB716DF00DF1F26 /* StoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreManager.h; sourceTree = "<group>"; };
+		B21DC05B1BB716DF00DF1F26 /* StoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreManager.m; sourceTree = "<group>"; };
+		B21DC05D1BB7180200DF1F26 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		B21DC05E1BB7180200DF1F26 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,19 +97,10 @@
 		AACFAF301BAF4F3C00BA7C90 /* Lesson1 */ = {
 			isa = PBXGroup;
 			children = (
-				AACFAF4E1BAF5BA500BA7C90 /* NetManager.h */,
-				AACFAF4F1BAF5BA500BA7C90 /* NetManager.m */,
-				AACFAF3A1BAF4F3C00BA7C90 /* Main.storyboard */,
-				AACFAF4B1BAF5B0100BA7C90 /* UIViewController+Extensions.h */,
-				AACFAF4C1BAF5B0100BA7C90 /* UIViewController+Extensions.m */,
-				AACFAF371BAF4F3C00BA7C90 /* LoginViewController.h */,
-				AACFAF381BAF4F3C00BA7C90 /* LoginViewController.m */,
-				AACFAF511BAF5F9D00BA7C90 /* AppViewController.h */,
-				AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */,
-				B21DC0511BB5F02000DF1F26 /* RegisterViewController.h */,
-				B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */,
-				B21DC0541BB5F2C900DF1F26 /* RegisterViewModel.h */,
-				B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */,
+				B21DC0601BB7296D00DF1F26 /* Network */,
+				B21DC0611BB7298600DF1F26 /* DataStore */,
+				B21DC0621BB729A900DF1F26 /* Controllers */,
+				B21DC0681BB72A6100DF1F26 /* Categories */,
 				AACFAF311BAF4F3C00BA7C90 /* Supporting Files */,
 			);
 			path = Lesson1;
@@ -117,6 +117,93 @@
 				AACFAF321BAF4F3C00BA7C90 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B21DC0601BB7296D00DF1F26 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AACFAF4E1BAF5BA500BA7C90 /* NetManager.h */,
+				AACFAF4F1BAF5BA500BA7C90 /* NetManager.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		B21DC0611BB7298600DF1F26 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				B21DC05A1BB716DF00DF1F26 /* StoreManager.h */,
+				B21DC05B1BB716DF00DF1F26 /* StoreManager.m */,
+				B21DC05D1BB7180200DF1F26 /* Item.h */,
+				B21DC05E1BB7180200DF1F26 /* Item.m */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
+		B21DC0621BB729A900DF1F26 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B21DC0631BB729D000DF1F26 /* Login */,
+				B21DC0661BB72A0200DF1F26 /* Application */,
+				B21DC0641BB729DF00DF1F26 /* Edit */,
+				B21DC0651BB729EE00DF1F26 /* Registration */,
+				B21DC0671BB72A2F00DF1F26 /* Views */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B21DC0631BB729D000DF1F26 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AACFAF371BAF4F3C00BA7C90 /* LoginViewController.h */,
+				AACFAF381BAF4F3C00BA7C90 /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		B21DC0641BB729DF00DF1F26 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				B21DC0571BB6986300DF1F26 /* EditViewController.h */,
+				B21DC0581BB6986300DF1F26 /* EditViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		B21DC0651BB729EE00DF1F26 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B21DC0511BB5F02000DF1F26 /* RegisterViewController.h */,
+				B21DC0521BB5F02000DF1F26 /* RegisterViewController.m */,
+				B21DC0541BB5F2C900DF1F26 /* RegisterViewModel.h */,
+				B21DC0551BB5F2C900DF1F26 /* RegisterViewModel.m */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		B21DC0661BB72A0200DF1F26 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				AACFAF511BAF5F9D00BA7C90 /* AppViewController.h */,
+				AACFAF521BAF5F9D00BA7C90 /* AppViewController.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		B21DC0671BB72A2F00DF1F26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AACFAF3A1BAF4F3C00BA7C90 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B21DC0681BB72A6100DF1F26 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AACFAF4B1BAF5B0100BA7C90 /* UIViewController+Extensions.h */,
+				AACFAF4C1BAF5B0100BA7C90 /* UIViewController+Extensions.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		E2E2320F8AAB5CA33E3CB29C /* Pods */ = {
@@ -234,13 +321,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACFAF4D1BAF5B0100BA7C90 /* UIViewController+Extensions.m in Sources */,
+				B21DC0591BB6986300DF1F26 /* EditViewController.m in Sources */,
 				AACFAF501BAF5BA500BA7C90 /* NetManager.m in Sources */,
 				AACFAF391BAF4F3C00BA7C90 /* LoginViewController.m in Sources */,
 				AACFAF361BAF4F3C00BA7C90 /* AppDelegate.m in Sources */,
 				AACFAF531BAF5F9D00BA7C90 /* AppViewController.m in Sources */,
 				AACFAF331BAF4F3C00BA7C90 /* main.m in Sources */,
+				B21DC05F1BB7180200DF1F26 /* Item.m in Sources */,
 				B21DC0561BB5F2C900DF1F26 /* RegisterViewModel.m in Sources */,
 				B21DC0531BB5F02000DF1F26 /* RegisterViewController.m in Sources */,
+				B21DC05C1BB716DF00DF1F26 /* StoreManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@
         }
     }];
     
-    RAC(self.signInButton, enabled) = [RACSignal combineLatest:@[ self.loginTextField.rac_textSignal, self.passwordTextField.rac_textSignal ] reduce:^(NSString *login, NSString *password){
+    RAC(self.signInButton, enabled) = [RACSignal combineLatest:@[self.loginTextField.rac_textSignal, self.passwordTextField.rac_textSignal ] reduce:^(NSString *login, NSString *password){
         return @(login.length > 4 && password.length > 2);
     }];
     

@@ -8,44 +8,40 @@
 
 #import "AppViewController.h"
 #import <ReactiveCocoa.h>
-#import <KVOMutableArray+ReactiveCocoaSupport.h>
 #import <BlocksKit+UIKit.h>
-
-@interface AppViewController ()
-@property (nonatomic, readonly) KVOMutableArray *items;
-@end
+#import "EditViewController.h"
+#import "StoreManager.h"
+#import "Item.h"
 
 @implementation AppViewController
-@synthesize items = _items;
 
-- (KVOMutableArray *)items {
-    if (!_items) {
-        _items = [KVOMutableArray new];
-        @weakify(self);
-        [_items.changeSignal subscribeNext:^(RACTuple *tuple) {
-            @strongify(self);
-            self.title = [NSString stringWithFormat:@"Items count: %@", @([tuple.first count])];
-            NSKeyValueChange change = [tuple.second[NSKeyValueChangeKindKey] integerValue];
-            NSArray *indices = [tuple.second[NSKeyValueChangeIndexesKey] bk_mapIndex:^id(NSUInteger index) {
-                return [NSIndexPath indexPathForItem:index inSection:0];
-            }];
-            switch (change) {
-                case NSKeyValueChangeInsertion:
-                    [self.tableView insertRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
-                    break;
-                case NSKeyValueChangeRemoval:
-                    [self.tableView deleteRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
-                    break;
-                case NSKeyValueChangeReplacement:
-                    [self.tableView reloadRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
-                    break;
-                default:
-                    [self.tableView reloadData];
-                    break;
-            }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    @weakify(self);
+    [[StoreManager sharedInstance].items.changeSignal subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        self.title = [NSString stringWithFormat:@"Items count: %@", @([tuple.first count])];
+        NSKeyValueChange change = [tuple.second[NSKeyValueChangeKindKey] integerValue];
+        NSArray *indices = [tuple.second[NSKeyValueChangeIndexesKey] bk_mapIndex:^id(NSUInteger index) {
+            return [NSIndexPath indexPathForItem:index inSection:0];
         }];
-    }
-    return _items;
+        switch (change) {
+            case NSKeyValueChangeInsertion:
+                [self.tableView insertRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            case NSKeyValueChangeRemoval:
+                [self.tableView deleteRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            case NSKeyValueChangeReplacement:
+                [self.tableView reloadRowsAtIndexPaths:indices withRowAnimation:UITableViewRowAnimationAutomatic];
+                break;
+            default:
+                [self.tableView reloadData];
+                break;
+        }
+    }];
+    
 }
 
 - (IBAction)logoutDidPress:(id)sender {
@@ -53,16 +49,18 @@
 }
 
 - (IBAction)addButtonDidPress:(id)sender {
-    [self.items addObject:@(self.items.count)];
+    [self performSegueWithIdentifier:@"edit" sender:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.items.count;
+    return [StoreManager sharedInstance].items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.items[indexPath.row]];
+    Item *item = [[StoreManager sharedInstance] itemAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld", item.number];
+    cell.detailTextLabel.text = item.text;
     return cell;
 }
 
@@ -71,24 +69,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.items removeObjectAtIndex:indexPath.row];
+    [[StoreManager sharedInstance] deleteItemAtIndex:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSNumber *number = self.items[indexPath.row];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Change value" message:[NSString stringWithFormat:@"Enter new value for %@", number] preferredStyle:UIAlertControllerStyleAlert];
-    __weak UIAlertController *wAlert = alert;
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.keyboardType = UIKeyboardTypeNumberPad;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *input = wAlert.textFields.firstObject;
-        NSNumber *value = @([input.text integerValue]);
-        [self.items replaceObjectAtIndex:indexPath.row withObject:value];
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+    [self performSegueWithIdentifier:@"edit" sender:indexPath];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"edit"]) {
+        EditViewController *vc = segue.destinationViewController;
+        if (sender) {
+            NSIndexPath *indexPath = (NSIndexPath *)sender;
+            vc.isNewElement = NO;
+            vc.index = indexPath.row;
+        } else {
+            vc.isNewElement = YES;
+        }
+    }
 }
 
 @end
