@@ -19,4 +19,11 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    Item *item = [[[self class] allocWithZone:zone] init];
+    item->_number = _number;
+    item->_text = [_text copyWithZone:zone];
+    return item;
+}
+
 @end

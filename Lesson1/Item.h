@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Item : NSObject
+@interface Item : NSObject <NSCopying>
 
 @property (assign, nonatomic) NSInteger number;
 @property (strong, nonatomic) NSString *text;

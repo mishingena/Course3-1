@@ -35,15 +35,16 @@
 }
 
 - (Item *)itemAtIndex:(NSInteger)index {
-    return self.items[index];
+    Item *item = self.items[index];
+    return [item copy];
 }
 
 - (void)saveItem:(Item *)item atIndex:(NSInteger)index {
-    self.items[index] = item;
+    self.items[index] = [item copy];
 }
 
 - (void)addItem:(Item *)item {
-    [self.items addObject:item];
+    [self.items addObject:[item copy]];
 }
 
 - (void)deleteItemAtIndex:(NSInteger)index {
